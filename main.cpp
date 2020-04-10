@@ -1,9 +1,17 @@
 #include <iostream>
-
+#include <iostream>
 using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    setlocale(LC_ALL, "Portuguese");
+
+    int cpf;
+
+    cout << "Digite seu CPF: ";
+    cin >> cpf;
+
+    cout << cpf;
+
     return 0;
 }
