@@ -8,9 +8,8 @@ int main()
     setlocale(LC_ALL, "Portuguese");
 
     char posicao_cpf[9];
-    int cpf_numerico, soma, quociente;
+    int cpf_numerico, soma, quociente, resto_da_divisao, digitoVerificador;
     int digito_1, digito_2, digito_3, digito_4, digito_5, digito_6, digito_7, digito_8, digito_9;
-    int resto_da_divisao;
 
     cout << "Digite seu CPF: ";
     cin >> cpf_numerico;
@@ -33,7 +32,13 @@ int main()
     quociente = soma / 11;
     resto_da_divisao = soma % 11;
 
-    cout << resto_da_divisao;
+    if (resto_da_divisao < 2) {
+        digitoVerificador = 0;
+    } else {
+        digitoVerificador = 11 - resto_da_divisao;
+    }
+
+    cout << cpf_numerico << "-" << digitoVerificador << "X";
 
     return 0;
 }
