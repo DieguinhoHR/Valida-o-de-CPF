@@ -8,7 +8,7 @@ int main()
     setlocale(LC_ALL, "Portuguese");
 
     char posicao_cpf[11];
-    int cpf_numerico, soma_1, soma_2, quociente, resto_da_divisao, digitoVerificador_1, digitoVerificador_2;
+    int cpf_numerico, resto_da_divisao, digito_verificador_1, digito_verificador_2;
     int digito_1, digito_2, digito_3, digito_4, digito_5, digito_6, digito_7, digito_8, digito_9;
 
     cout << "Digite seu CPF: ";
@@ -32,37 +32,31 @@ int main()
     digito_8 = posicao_cpf[7] - '0';
     digito_9 = posicao_cpf[8] - '0';
 
-    soma_1 = digito_1 * 10 + digito_2 * 9 + digito_3 * 8 + digito_4 * 7 +
-           digito_5 * 6 + digito_6 * 5 + digito_7 * 4 + digito_8 * 3 + digito_9 * 2;
-
-    quociente = soma_1 / 11;
-    resto_da_divisao = soma_1 % 11;
+    resto_da_divisao = (digito_1 * 10 + digito_2 * 9 + digito_3 * 8 + digito_4 * 7 +
+             digito_5 * 6 + digito_6 * 5 + digito_7 * 4 + digito_8 * 3 + digito_9 * 2) % 11;
 
     if (resto_da_divisao < 2) {
-        digitoVerificador_1 = 0;
+        digito_verificador_1 = 0;
     } else {
-        digitoVerificador_1 = 11 - resto_da_divisao;
+        digito_verificador_1 = 11 - resto_da_divisao;
     }
 
-    quociente = 0;
     resto_da_divisao = 0;
 
-    soma_2 = digito_1 * 11 + digito_2 * 10 + digito_3 * 9 + digito_4 * 8 +
-            digito_5 * 7 + digito_6 * 6 + digito_7 * 5 + digito_8 * 4 + digito_9 * 3 + digitoVerificador_1 * 2;
-
-    quociente = soma_2 / 11;
-    resto_da_divisao = soma_2 % 11;
+    resto_da_divisao = (digito_1 * 11 + digito_2 * 10 + digito_3 * 9 + digito_4 * 8 +
+            digito_5 * 7 + digito_6 * 6 + digito_7 * 5 + digito_8 * 4 + digito_9 * 3 +
+            digito_verificador_1 * 2) % 11;
 
     if (resto_da_divisao < 2) {
-        digitoVerificador_2 = 0;
+        digito_verificador_2 = 0;
     } else {
-        digitoVerificador_2 = 11 - resto_da_divisao;
+        digito_verificador_2 = 11 - resto_da_divisao;
     }
 
     if (digito_1 == 0) {
-        cout << digito_1 << cpf_numerico << "-" << digitoVerificador_1 << digitoVerificador_2;
+        cout << digito_1 << cpf_numerico << "-" << digito_verificador_1 << digito_verificador_2;
     } else {
-        cout << cpf_numerico << "-" << digitoVerificador_1 << digitoVerificador_2;
+        cout << cpf_numerico << "-" << digito_verificador_1 << digito_verificador_2;
     }
 
     return 0;
